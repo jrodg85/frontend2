@@ -13,8 +13,9 @@ export class OfertaImpl {
     this.urlOferta=urlOferta;
     this.vivienda = vivienda;
   }
-  getIdAnalitica(urlOferta: string): string {
+  getIdOferta(urlOferta: string): string {
     return urlOferta.slice(urlOferta.lastIndexOf('/') + 1, urlOferta.length);
   }
 
 }
+//done
