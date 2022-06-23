@@ -1,1 +1,77 @@
-<p>oferta-form works!</p>
+<a>oferta form</a>
+<body>
+  <h3>OFERTAS</h3>
+  <br/>
+  <div class="form-group ">
+    <label> VIVIENDA </label>
+    <select class="form-control" formControlName="vivienda" (change)="cambiaTipo($event)">
+      <option *ngFor="let vivienda of viviendas" value="{{vivienda.urlVivienda}}">
+        <span>Provincia: {{ vivienda.provincia }}<br>
+          Ciudad: {{ vivienda.ciudad }}<br>
+          Direccion: {{ vivienda.direccion }}<br>
+          Codigo Postal: {{ vivienda.codigoPostal }}<br>
+          Ref. Catastral: {{ vivienda.idReferenciaCatastral }}<br>
+          Superficie: {{ vivienda.superficie }}<br>
+        </span>
+      </option>
+    </select>
+  </div>
+
+  <h3>OFERTAS</h3>
+  <br/>
+  <form [formGroup]="ofertaForm" (ngSubmit)="onSubmit()">
+    <div class="form-group col-md-3">
+      <select class="form-control" formControlName="tipoOferta" (change)="cambiaTipo($event)">
+        <option *ngFor="let elemento of tipos" [value]="elemento.id">
+          <span>{{ elemento.description }}</span>
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label>TITULO OFERTA</label>
+      <input type="text" formControlName="tituloOferta" class="form-control" placeholder="tituloOferta"
+        [ngClass]="{'is-invalid': oferta.idOferta}" />
+
+      <div *ngIf="oferta.tituloOferta" class="invalid-feedback">
+      </div>
+    </div>
+    <div class="form-group col-md-3" *ngIf="ofertaForm && ofertaForm.value.type == 1">
+      <section>
+        <div class="">
+          <label for="precioVenta">PRECIO DE VENTA &nbsp; </label>
+          <input type="text" formControlName="precioVenta" class="form-control" placeholder="precioVenta"
+            [ngClass]="{'is-invalid': oferta.idOferta}" />
+        </div>
+        <div class="">
+          <label for="ph">PH &nbsp; </label>
+          <input type="text" formControlName="p_h" class="form-control" placeholder="Ph"
+            [ngClass]="{'is-invalid': oferta.idOferta}" />
+        </div>
+        </section>
+    </div>
+
+    <div *ngIf="ofertaForm && ofertaForm.value.type == 2">
+      <div class="form-group col-md-3">
+        <label>COLESTEROL</label>
+        <input type="number" formControlName="col" class="form-control" placeholder="colesterol"
+          [ngClass]="{'is-invalid': oferta.idOferta}" />
+      </div>
+
+      <div class="form-group col-md-3">
+        <label>UREA</label>
+        <input type="number" formControlName="ure" class="form-control" placeholder="urea"
+          [ngClass]="{'is-invalid': oferta.idOferta}" />
+      </div>
+
+    </div>
+
+    <section #botones>
+      <button type="reset" class="btn">Borrar</button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-primary">Aceptar</button>
+    </section>
+  </form>
+  venta:{{ofertaForm && ofertaForm.value.type == 2}}
+  Alquiler:{{ofertaForm && ofertaForm.value.type == 1}}
+
+</body>

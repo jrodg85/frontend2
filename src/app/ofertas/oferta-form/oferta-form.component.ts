@@ -144,15 +144,16 @@ export class OfertaFormComponent implements OnInit {
         tituloOferta: [
           this.ofertaForm.value.tituloOferta,
           [Validators.required,
-          Validators.maxLength(10),
-          Validators.minLength(10),
+          Validators.maxLength(100),
+          Validators.minLength(5),
         ]
         ],
         precioVenta: [
           this.ofertaForm.value.precioVenta,
           [Validators.required,
-          Validators.maxLength(0),
-          Validators.minLength(10)]
+          Validators.maxLength(32),
+          Validators.minLength(1),
+          Validators.min(0),]
         ],
         precioAlquilerMensual: [],
         mesesFianza: [],
@@ -164,21 +165,22 @@ export class OfertaFormComponent implements OnInit {
         tituloOferta: [
           this.ofertaForm.value.tituloOferta,
           [Validators.required,
-          Validators.maxLength(10),
-          Validators.minLength(10)]
+          Validators.maxLength(100),
+          Validators.minLength(5)]
         ],
         precioVenta: [],
         precioAlquilerMensual: [
           this.ofertaForm.value.precioAlquilerMensual,
           [Validators.required,
-          Validators.min(0),
-          Validators.max(10)]
+          Validators.minLength(0),
+          Validators.maxLength(10),
+          Validators.min(0),]
         ],
         mesesFianza: [
           this.ofertaForm.value.mesesFianza,
           [Validators.required,
           Validators.min(0),
-          Validators.max(10)]
+          Validators.max(12)]
         ],
         vivienda: [this.ofertaForm.value.vivienda, [Validators.required]]
       });

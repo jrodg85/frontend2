@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path:'',
     component: OfertasComponent,
-   },
+  },
     {
     path: 'ofertas-form',
     component: OfertaFormComponent,
@@ -29,7 +29,7 @@ const routes: Routes = [
     component: AlquilerComponent,
   },
   {
-    path: 'ofertas-vivienda/:id/:name',
+    path: 'ofertas-vivienda/:id',
     component: OfertasViviendaComponent,
     children: [
       {
@@ -46,3 +46,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class OfertasRoutingModule { }
+
+
+//dome

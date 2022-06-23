@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AlquilerImpl } from '../models/alquiler-impl';
 import { OfertaImpl } from '../models/oferta-impl';
 import { VentaImpl } from '../models/venta-impl';
@@ -20,7 +19,6 @@ export class OfertasComponent implements OnInit {
   constructor(
     private alquilerService: AlquilerService,
     private ventaService: VentaService,
-    private router: Router
   ) {}
 
   ngOnInit(): void {

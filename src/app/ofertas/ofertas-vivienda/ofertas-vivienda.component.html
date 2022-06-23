@@ -1,1 +1,40 @@
 <p>ofertas-vivienda works!</p>
+<router-outlet></router-outlet>
+
+<div class="content-ofertas row">
+  <div class="Provincia col" *ngIf="provincia">PROVINCIA:</div>
+  <div class="provincia col">{{ provincia }}</div>
+</div>
+<div class="content-ofertas row">
+  <div class="Ciudad col" *ngIf="ciudad">CIUDAD:</div>
+  <div class="ciudad col">{{ ciudad }}</div>
+</div>
+<div class="content-ofertas row">
+    <div class="Direccion col" *ngIf="direccion">DIRECCION:</div>
+  <div class="direccion col">{{ direccion }}</div>
+</div>
+<div class="content-ofertas row">
+  <div class="codigoPostal col" *ngIf="codigoPostal">CODIGO POSTAL:</div>
+  <div class="codigoPostal col">{{ codigoPostal }}</div>
+</div>
+<div class="content-ofertas row">
+  <div class="IdReferenciaCatastral col" *ngIf="idReferenciaCatastral">REF. CATASTRAL:</div>
+  <div class="idReferenciaCatastral col">{{ idReferenciaCatastral }}</div>
+</div>
+<div class="content-ofertas row">
+  <div class="Superficie col" *ngIf="superficie">SUPERFICIE:</div>
+  <div class="superficie col">{{ superficie }}</div>
+</div>
+
+<section>
+
+  <div class="row col-md-5">
+    <div class="col-md-3">TITULO OFERTA</div>
+  </div>
+</section>
+
+
+<div *ngFor="let oferta of todasOfertas">
+  <app-oferta-item [oferta]="oferta" (ofertaEliminar)="onOfertaEliminar($event)"
+    (ofertaSeleccionada)="verOferta($event)"></app-oferta-item>
+</div>

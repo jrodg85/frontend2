@@ -41,7 +41,8 @@ export class OfertaItemComponent implements OnInit {
   }
 
   borrarOferta(oferta: OfertaImpl["idOferta"]): void {
-
+    //    this.negocioService.deleteNegocio(this.negocioItem.urlNegocio);
+    /* if (confirm('Confirme para eliminar')) { */
       this.ofertaEliminar.emit(this.oferta);
 
 
