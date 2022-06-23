@@ -1,0 +1,50 @@
+/*fuentes*/
+@font-face {
+  font-family: lorem;
+  src: url(../../../assets/fonts/lorem.ttf);
+}
+@font-face {
+  font-family: boton;
+  src: url(../../../assets/fonts/boton.ttf);
+}
+/*estilo del header*/
+.intro-index {
+  background-image: url(../../../assets/img/casa-index.png);
+  font-size: larger;
+  font-weight: bold;
+  background-position: center ;
+  background-size: cover;
+  padding: 70px;
+  font-family: lorem;
+}
+.intro-index > h1 {
+  display:flex;
+  justify-content:right;
+  align-items:center;
+}
+
+.boton-viviendas {
+  position: middle;
+  display:flex;
+  justify-content:center;
+  margin: 20px;
+  align-items:center;
+}
+
+.boton-ofertas {
+  position: middle;
+  display:flex;
+  justify-content:center;
+  margin: 20px;
+  align-items:center;
+}
+
+
+
+.boton-publicar-casa-texto {
+
+  font-family: boton;
+  color: #ffffff;
+  background-color: black;
+  display:flex;
+}

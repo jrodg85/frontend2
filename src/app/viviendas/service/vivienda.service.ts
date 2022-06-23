@@ -18,6 +18,9 @@ export class ViviendaService {
   private http: HttpClient,
   private auxService: AuxiliarService) { }
 
+  findById(serviceId: any) :Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}/${serviceId}`);
+  }
 
 
   getViviendas(): Observable<any> {
@@ -56,6 +59,11 @@ export class ViviendaService {
     ;
     return this.http.delete<any>(url);
   }
+
+  update(vivienda: ViviendaImpl, id: number) : Observable<any>  {
+    return this.http.put<any>(`${this.urlEndPoint}/${id}`, vivienda);
+  }
+
 
   patchVivienda(vivienda: ViviendaImpl) {
     return this.http.patch<any>(`${this.urlEndPoint}/${vivienda.idVivienda}`, vivienda);

@@ -6,8 +6,9 @@ import { ViviendasComponent } from './viviendas/viviendas.component';
 import { ViviendaComponent } from './viviendas/vivienda/vivienda.component';
 import { ViviendaFormComponent } from './vivienda-form/vivienda-form.component';
 import { ViviendaItemComponent } from './vivienda-item/vivienda-item.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuxiliarService } from '../service/auxiliar.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -21,8 +22,13 @@ import { AuxiliarService } from '../service/auxiliar.service';
     CommonModule,
     ViviendasRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
+    FontAwesomeModule,
   ],
   exports: [ ViviendaComponent],
   providers: [AuxiliarService]
 })
 export class ViviendasModule { }
+
+
+//done

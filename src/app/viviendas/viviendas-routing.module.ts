@@ -9,7 +9,7 @@ const routes: Routes = [
   component: ViviendasComponent,
   },
   {
-    path: 'formulario',
+    path: 'vivienda-form',
     component: ViviendaFormComponent
     }
 ];
@@ -19,3 +19,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class ViviendasRoutingModule { }
+
+
+//done

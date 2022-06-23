@@ -4,7 +4,7 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
 
 const routes: Routes = [
   {
-    path: '', //ruta no indicada
+    path: '',
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
   {
@@ -33,3 +33,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+
+//done

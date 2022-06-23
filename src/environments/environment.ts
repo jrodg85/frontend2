@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  host: 'http://localhost:8080/api/',
+  host: 'http://127.0.0.1:8080/api/',
   itemsPorPagina: 100
 };
 
@@ -16,3 +16,5 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
+
+//done

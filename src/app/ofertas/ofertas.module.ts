@@ -11,23 +11,34 @@ import { AlquilerComponent } from './alquiler/alquiler.component';
 import { AlquilerItemComponent } from './alquiler-item/alquiler-item.component';
 import { VentaComponent } from './venta/venta.component';
 import { VentaItemComponent } from './venta-item/venta-item.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AuxiliarService } from '../service/auxiliar.service';
+
 
 
 @NgModule({
   declarations: [
+    OfertasComponent,
     OfertaFormComponent,
     OfertaItemComponent,
-    OfertasComponent,
-    OfertasViviendaComponent,
     EdicionOfertasComponent,
+    OfertasViviendaComponent,
+    VentaComponent,
+    VentaItemComponent,
     AlquilerComponent,
     AlquilerItemComponent,
-    VentaComponent,
-    VentaItemComponent
-  ],
+    OfertasViviendaComponent,
+],
   imports: [
     CommonModule,
-    OfertasRoutingModule
-  ]
+    OfertasRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FontAwesomeModule,
+    HttpClientModule
+  ],
+  providers: [AuxiliarService]
 })
 export class OfertasModule { }

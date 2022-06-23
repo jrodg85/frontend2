@@ -22,5 +22,6 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ],
   exports: [ShellComponent]
+
 })
 export class CoreModule { }
