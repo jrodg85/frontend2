@@ -1,17 +1,17 @@
 export class OfertaImpl {
-  id: number;
+  idOferta: number;
   tipo: number;
   tituloOferta: string;
   urlOferta: string;
   vivienda: string;
 
 
-  constructor (id:number,tituloOferta: string, urlOferta: string, vivienda: string){
-    this.id = id;
+  constructor (idOferta:number,tituloOferta: string, vivienda: string , urlOferta: string){
+    this.idOferta = idOferta;
     this.tipo = 0;
     this.tituloOferta=tituloOferta;
-    this.urlOferta=urlOferta;
     this.vivienda = vivienda;
+    this.urlOferta=urlOferta;
   }
   getIdOferta(urlOferta: string): string {
     return urlOferta.slice(urlOferta.lastIndexOf('/') + 1, urlOferta.length);
