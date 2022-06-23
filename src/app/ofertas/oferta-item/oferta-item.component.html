@@ -1,1 +1,31 @@
 <p>oferta-item works!</p>
+<div class="row col-md-5 sep" [ngClass]="{alquiler: oferta.tipo===1, venta:oferta.tipo===2}" (ngSubmit)="onSubmit()">
+
+  <div class="col-md-3">
+    {{ oferta.tituloOferta }}
+  </div>
+  <div class="col-md-3" *ngIf="oferta.tipo ===1">
+    Precio Alquiler Mensual {{oferta.precioAlquilerMensual}}
+    <br>
+    Meses Fianza {{oferta.mesesFianza}}
+  </div>
+  <div class="col-md-3" *ngIf="oferta.tipo ===2">
+    Precio de Venta : {{oferta.precioVenta}}
+  </div>
+
+  <div class="col-md-4">
+
+
+  <a data-bs-toggle="modal" data-bs-target="#modalModificar" (click)="ofertaSeleccionada.emit(oferta) "
+  routerLink="/oferta/edicion-ofertas/{{oferta.idOferta}}/{{oferta.tipo}}">
+    &nbsp;<fa-icon class=" fa-2x" [icon]="modificar"></fa-icon>&nbsp;
+  </a>
+
+
+  <a   type="button" (click)="borrarOferta(oferta.idOferta)">
+    &nbsp;&nbsp;
+    <fa-icon class=" fa-2x" [icon]="trash"></fa-icon>
+    &nbsp;
+  </a>
+  </div>
+  </div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { VentaImpl } from '../models/venta-impl';
 
 @Component({
   selector: 'app-venta-item',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./venta-item.component.css']
 })
 export class VentaItemComponent implements OnInit {
+  @Input() venta: VentaImpl = new VentaImpl(0,"","","",0);
 
   constructor() { }
 

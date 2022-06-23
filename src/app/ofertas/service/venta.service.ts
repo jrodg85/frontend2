@@ -38,8 +38,8 @@ export class VentaService {
       id,
       ventaApi.tituloOferta,
       ventaApi.vivienda,
-      ventaApi.urlOferta,
-      ventaApi.usuario
+      url,
+      ventaApi.precioVenta
     );
   }
 

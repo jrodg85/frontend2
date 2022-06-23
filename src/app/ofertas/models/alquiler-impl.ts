@@ -9,8 +9,8 @@ export class AlquilerImpl  extends OfertaImpl
   mesesFianza: number;
 
 
-constructor(id:number,tituloOferta: string,urlOferta:string, precioAlquilerMensual: number, mesesFianza:number, vivienda: string ){
-  super(id, tituloOferta, urlOferta, vivienda);
+constructor(idOferta:number , tituloOferta: string , vivienda: string , urlOferta:string, precioAlquilerMensual: number, mesesFianza:number  ){
+  super(idOferta, tituloOferta, vivienda, urlOferta);
   super.tipo=1;
   this.precioAlquilerMensual=precioAlquilerMensual;
   this.mesesFianza=mesesFianza;

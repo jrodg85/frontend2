@@ -1,1 +1,34 @@
 <p>ofertas works!</p>
+
+<!-- <header>
+  <a routerLink="ver" class="button">ANALITICAS</a>
+  <a routerLink="nuevo" class="button">NUEVA ANALITICA</a>
+  </header>
+  <body>
+
+  <router-outlet></router-outlet>
+
+  </body>-->
+
+  <router-outlet></router-outlet>
+<!-- <header>
+  <a routerLink="/analiticas" class="button">Ver Analiticas</a>
+  <a routerLink="/analiticas/analiticas-form" class="button">Añadir nueva Analitica</a>
+</header>
+ -->
+<body>
+  <router-outlet></router-outlet>
+  <br><br><br>
+<section>
+  <div class="row col-md-5 ">
+    <div class="col-md-3">
+      TITULO OFERTA
+    </div>
+  </div>
+</section>
+<div class="content-ofertas">
+  <div *ngFor="let oferta of todasOfertas">
+    <app-oferta-item [oferta]="oferta" (ofertaEliminar)="onOfertaEliminar($event)"
+      (ofertaSeleccionada)="verOferta($event)"></app-oferta-item>
+  </div>
+</div>

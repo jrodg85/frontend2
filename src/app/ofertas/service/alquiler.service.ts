@@ -40,10 +40,10 @@ export class AlquilerService {
     return new AlquilerImpl(
       id,
       alquilerAPI.tituloOferta,
+      alquilerAPI.vivienda,
       url,
       alquilerAPI.precioAlquilerMensual,
-      alquilerAPI.mesesFianza,
-      alquilerAPI.vivienda
+      alquilerAPI.mesesFianza
     );
   }
 
