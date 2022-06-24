@@ -2,7 +2,7 @@
 <body>
   <h3>OFERTAS</h3>
   <br/>
-  <div class="form-group ">
+  <div class="form-group col-md-3">
     <label> VIVIENDA </label>
     <select class="form-control" formControlName="vivienda" (change)="cambiaTipo($event)">
       <option *ngFor="let vivienda of viviendas" value="{{vivienda.urlVivienda}}">
@@ -17,7 +17,7 @@
     </select>
   </div>
 
-  <h3>OFERTAS</h3>
+  <h4>OFERTAS</h4>
   <br/>
   <form [formGroup]="ofertaForm" (ngSubmit)="onSubmit()">
     <div class="form-group col-md-3">

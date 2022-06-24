@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { AlquilerImpl } from '../models/alquiler-impl';
 
 @Component({
   selector: 'app-alquiler-item',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./alquiler-item.component.css']
 })
 export class AlquilerItemComponent implements OnInit {
-
+  @Input() alquiler: AlquilerImpl = new AlquilerImpl(0,"","","",0,0);
   constructor() { }
 
   ngOnInit(): void {

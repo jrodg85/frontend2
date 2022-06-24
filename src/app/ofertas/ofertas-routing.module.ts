@@ -13,7 +13,7 @@ const routes: Routes = [
     component: OfertasComponent,
   },
     {
-    path: 'ofertas-form',
+    path: 'ofertas-form/type',
     component: OfertaFormComponent,
   },
   {

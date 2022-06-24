@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuxiliarService } from 'src/app/service/auxiliar.service';
+import { AlquilerImpl } from '../models/alquiler-impl';
+import { AlquilerService } from '../service/alquiler.service';
 
 @Component({
   selector: 'app-alquiler',
@@ -7,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlquilerComponent implements OnInit {
 
-  constructor() { }
+  alquileres: AlquilerImpl[] = [];
+  todosAlquiler: AlquilerImpl[] = [];
+  numPaginas: number = 0;
 
-  ngOnInit(): void {
+    constructor(
+  private alquilerService: AlquilerService,
+  private auxService: AuxiliarService) {}
+
+
+    ngOnInit(): void {
+      this.alquilerService.getAlquiler().subscribe((response) => this.alquileres =
+      this.alquilerService.extraerAlquiler(response));
+      this.getTodosAlquileres();
+    }
+
+
+    getTodosAlquileres(): void {
+      this.alquilerService.getAlquiler().subscribe(alquiler => {
+        this.numPaginas = this.auxService.getPaginasResponse(alquiler);
+        for (let index = 1; index <= this.numPaginas; index++) {
+          this.alquilerService.getAlquilerPagina(index)
+            .subscribe(response => {
+              this.todosAlquiler.push(...this.alquilerService.extraerAlquiler(response));
+            });
+        }
+      });
+    }
+
   }
 
-}

@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuxiliarService } from '../service/auxiliar.service';
+import { OfertasViviendaItemComponent } from './ofertas-vivienda/ofertas-vivienda-item/ofertas-vivienda-item.component';
 
 
 
@@ -30,6 +31,7 @@ import { AuxiliarService } from '../service/auxiliar.service';
     AlquilerComponent,
     AlquilerItemComponent,
     OfertasViviendaComponent,
+    OfertasViviendaItemComponent,
 ],
   imports: [
     CommonModule,
