@@ -21,6 +21,10 @@ const routes: Routes = [
     component: EdicionOfertasComponent,
   },
   {
+    path: 'edicion-oferta/:id/:type/:idVivienda',
+    component: EdicionOfertasComponent,
+  },
+  {
     path: 'venta/:id',
     component: VentaComponent,
   },

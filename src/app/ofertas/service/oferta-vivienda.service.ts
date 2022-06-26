@@ -12,6 +12,6 @@ export class OfertaViviendaService {
   constructor(private http: HttpClient) { }
 
   getOfertasVivienda(id: string): Observable<any> {
-    return this.http.get<any>(`${this.urlEndPoint}${id}/ofertas`);
+    return this.http.get<any>(`${this.urlEndPoint}${id}/ofertasDeVivienda`);
   }
 }

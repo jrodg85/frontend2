@@ -20,7 +20,7 @@ export class OfertasComponent implements OnInit {
   constructor(
     private alquilerService: AlquilerService,
     private ventaService: VentaService,
-    private route: Router,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -62,7 +62,7 @@ export class OfertasComponent implements OnInit {
   }
 
   verOferta(oferta: OfertaImpl){
-    this.route.navigate ([`/ofertas/edicion-oferta/${oferta.idOferta}/${oferta.tipo}`]);
+    this.router.navigate ([`/ofertas/edicion-oferta/${oferta.idOferta}/${oferta.tipo}`]);
   }
 
 

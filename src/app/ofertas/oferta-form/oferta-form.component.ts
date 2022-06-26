@@ -43,7 +43,7 @@ export class OfertaFormComponent implements OnInit {
     this.ofertaForm = this.formBuilder.group({
       type: ['', Validators.required],
       tituloOferta: ['', Validators.required],
-      precioVenta: [0],
+      precioDeVenta: [0],
       precioAlquilerMensual: [0],
       mesesFianza: [0],
       vivienda: ['', Validators.required]
@@ -81,7 +81,7 @@ export class OfertaFormComponent implements OnInit {
           const venta: VentaImpl = new VentaImpl(
             0,
             servicioEntity.tituloOferta,
-            servicioEntity.precioVenta,
+            servicioEntity.precioDeVenta,
             servicioEntity.url,
             servicioEntity.vivienda
 
@@ -148,8 +148,8 @@ export class OfertaFormComponent implements OnInit {
           Validators.minLength(5),
         ]
         ],
-        precioVenta: [
-          this.ofertaForm.value.precioVenta,
+        precioDeVenta: [
+          this.ofertaForm.value.precioDeVenta,
           [Validators.required,
           Validators.maxLength(32),
           Validators.minLength(1),
@@ -168,7 +168,7 @@ export class OfertaFormComponent implements OnInit {
           Validators.maxLength(100),
           Validators.minLength(5)]
         ],
-        precioVenta: [],
+        precioDeVenta: [],
         precioAlquilerMensual: [
           this.ofertaForm.value.precioAlquilerMensual,
           [Validators.required,
