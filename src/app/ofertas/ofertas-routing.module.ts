@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AlquilerComponent } from './alquiler/alquiler.component';
+import { CrearOfertaComponent } from './crear-oferta/crear-oferta.component';
 import { EdicionOfertasComponent } from './edicion-ofertas/edicion-ofertas.component';
 import { OfertaFormComponent } from './oferta-form/oferta-form.component';
 import { OfertasViviendaComponent } from './ofertas-vivienda/ofertas-vivienda.component';
@@ -13,8 +14,12 @@ const routes: Routes = [
     component: OfertasComponent,
   },
     {
-    path: 'ofertas-form/type',
+    path: 'ofertas-form/:type/:idVivienda',
     component: OfertaFormComponent,
+  },
+  {
+    path: 'nueva-oferta/:type',
+    component: CrearOfertaComponent,
   },
   {
     path: 'edicion-oferta/:id/:type',

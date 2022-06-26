@@ -1,21 +1,24 @@
 <p>oferta-item works!</p>
-<div class="row col-md-5 sep" [ngClass]="{alquiler: oferta.tipo===1, venta:oferta.tipo===2}" (ngSubmit)="onSubmit()">
+<div class="row col-12 sep" [ngClass]="{alquiler: oferta.tipo===1, venta:oferta.tipo===2}" (ngSubmit)="onSubmit()">
 
-  <div class="col-md-3">
-    {{ oferta.tituloOferta }}
+  <div class="col-12">
+    TITULO: {{ oferta.tituloOferta }}
   </div>
-  <div class="col-md-3" *ngIf="oferta.tipo ===1">
-    Precio Alquiler Mensual {{oferta.precioAlquilerMensual}}
+  <div class="col-12" *ngIf="oferta.tipo ===1">
+    PRECIO ALQUILER MENSUAL: {{oferta.precioAlquilerMensual}} €/mes
     <br>
-    Meses Fianza {{oferta.mesesFianza}}
+    MESES FIANZA: {{oferta.mesesFianza}} meses
   </div>
   <div class="col-md-3" *ngIf="oferta.tipo ===2">
-    Precio de Venta : {{oferta.precioDeVenta}}
+    PRECIO: {{oferta.precioDeVenta}} €
   </div>
 
   <div class="col-md-4">
 
 
+
+  </div>
+  </div>
   <a data-bs-toggle="modal" data-bs-target="#modalModificar" (click)="modificarOferta(oferta) ">
     &nbsp;<fa-icon class=" fa-2x" [icon]="modificar"></fa-icon>&nbsp;
   </a>
@@ -26,9 +29,6 @@
     <fa-icon class=" fa-2x" [icon]="trash"></fa-icon>
     &nbsp;
   </a>
-  </div>
-  </div>
-
 
 
   <!-- routerLink="/oferta/edicion-ofertas/{{oferta.idOferta}}/{{oferta.tipo}}" -->
