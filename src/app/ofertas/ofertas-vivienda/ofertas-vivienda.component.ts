@@ -56,7 +56,6 @@ export class OfertasViviendaComponent implements OnInit {
           console.log(vivienda);
           if (vivienda._embedded.ventas) {
             vivienda._embedded.ventas.forEach((a: any) => {
-              debugger;
               const urlSelf = a._links.self.href;
               const url = urlSelf.split('/');
               const id = parseInt(url[url.length - 1]);

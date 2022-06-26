@@ -37,7 +37,6 @@ export class ViviendaService {
   }
 
   mapearVivienda(viviendaApi: any): ViviendaImpl {
-    debugger;
     const url = viviendaApi._links.self.href;
     const aux = url.split('/');
     const id = parseInt(aux[aux.length-1]);

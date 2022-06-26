@@ -29,7 +29,7 @@ export class EdicionOfertasComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    ;
+    debugger;
     this.id = this.route.snapshot.params['id'];
     this.type = parseInt(this.route.snapshot.params['type']);
     console.log(this.id);
@@ -40,7 +40,7 @@ export class EdicionOfertasComponent implements OnInit {
 
     this.ventaService.findById(this.id).subscribe(
       (service)=>{
-        ;
+        debugger;
         console.log(service);
         this.ofertaForm = this.formBuilder.group({
           date: [service.fechaMuestra, Validators.required],

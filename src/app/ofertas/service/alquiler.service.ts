@@ -26,7 +26,7 @@ export class AlquilerService {
 
   extraerAlquiler(respuestaApi: any): AlquilerImpl[] {
     const alquiler: AlquilerImpl[] = [];
-    respuestaApi._embedded.alquiler.forEach((a: any) => {
+    respuestaApi._embedded.ofertas_de_alquiler.forEach((a: any) => {
       alquiler.push(this.mapearAlquiler(a));
     });
     return alquiler;

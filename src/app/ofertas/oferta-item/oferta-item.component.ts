@@ -31,7 +31,6 @@ export class OfertaItemComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.oferta);
-    debugger;
   }
 
   public onSubmit() {
@@ -53,6 +52,7 @@ export class OfertaItemComponent implements OnInit {
     this.ofertaSeleccionada.emit(this.oferta);
   }
   modificarOferta(oferta: OfertaImpl): void {
-    this.ofertaService.patchOferta(oferta).subscribe();
+    //this.ofertaService.patchOferta(oferta).subscribe();
+    this.ofertaSeleccionada.emit(oferta);
   }
 }

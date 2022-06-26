@@ -24,7 +24,7 @@ export class VentaService {
 
   extraerVenta(respuestaApi: any): VentaImpl[] {
     const venta: VentaImpl[] = [];
-    respuestaApi._embedded.ventas.forEach((s: any) => {
+    respuestaApi._embedded.ofertas_de_venta.forEach((s: any) => {
       venta.push(this.mapearVenta(s));
     });
     return venta;
@@ -39,7 +39,7 @@ export class VentaService {
       ventaApi.tituloOferta,
       ventaApi.vivienda,
       url,
-      ventaApi.precioVenta
+      ventaApi.precioDeVenta
     );
   }
 

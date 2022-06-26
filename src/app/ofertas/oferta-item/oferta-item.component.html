@@ -16,8 +16,7 @@
   <div class="col-md-4">
 
 
-  <a data-bs-toggle="modal" data-bs-target="#modalModificar" (click)="ofertaSeleccionada.emit(oferta) "
-  routerLink="/oferta/edicion-ofertas/{{oferta.idOferta}}/{{oferta.tipo}}">
+  <a data-bs-toggle="modal" data-bs-target="#modalModificar" (click)="modificarOferta(oferta) ">
     &nbsp;<fa-icon class=" fa-2x" [icon]="modificar"></fa-icon>&nbsp;
   </a>
 
@@ -29,3 +28,10 @@
   </a>
   </div>
   </div>
+
+
+
+  <!-- routerLink="/oferta/edicion-ofertas/{{oferta.idOferta}}/{{oferta.tipo}}" -->
+
+
+  <!-- ofertaSeleccionada.emit(oferta)  -->

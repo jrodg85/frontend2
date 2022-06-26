@@ -4,6 +4,7 @@ import { OfertaImpl } from '../models/oferta-impl';
 import { VentaImpl } from '../models/venta-impl';
 import { AlquilerService } from '../service/alquiler.service';
 import { VentaService } from '../service/venta.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ofertas',
@@ -19,6 +20,7 @@ export class OfertasComponent implements OnInit {
   constructor(
     private alquilerService: AlquilerService,
     private ventaService: VentaService,
+    private route: Router,
   ) {}
 
   ngOnInit(): void {
@@ -27,7 +29,6 @@ export class OfertasComponent implements OnInit {
   }
 
   getTodasOfertas(): void {
-    ;
     this.todasOfertas = [];
     this.ventaService.getVenta().subscribe((response) => {
       this.todasOfertas.push(
@@ -61,7 +62,8 @@ export class OfertasComponent implements OnInit {
   }
 
   verOferta(oferta: OfertaImpl){
-    ;
-    console.log(oferta);
+    this.route.navigate ([`/ofertas/edicion-oferta/${oferta.idOferta}/${oferta.tipo}`]);
   }
+
+
 }
