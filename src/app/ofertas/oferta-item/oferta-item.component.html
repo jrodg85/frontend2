@@ -1,5 +1,5 @@
 <p>oferta-item works!</p>
-<div class="row col-12 sep" [ngClass]="{alquiler: oferta.tipo===1, venta:oferta.tipo===2}" (ngSubmit)="onSubmit()">
+<div class="row col-12  pt-4 border-top border-danger" [ngClass]="{alquiler: oferta.tipo===1, venta:oferta.tipo===2}" (ngSubmit)="onSubmit()">
 
   <div class="col-12">
     TITULO: {{ oferta.tituloOferta }}
@@ -9,16 +9,13 @@
     <br>
     MESES FIANZA: {{oferta.mesesFianza}} meses
   </div>
-  <div class="col-md-3" *ngIf="oferta.tipo ===2">
+  <div class="col-12" *ngIf="oferta.tipo ===2">
     PRECIO: {{oferta.precioDeVenta}} €
   </div>
 
-  <div class="col-md-4">
-
-
-
-  </div>
-  </div>
+</div>
+<section>
+  &nbsp;&nbsp;&nbsp;&nbsp;
   <a data-bs-toggle="modal" data-bs-target="#modalModificar" (click)="modificarOferta(oferta) ">
     &nbsp;<fa-icon class=" fa-2x" [icon]="modificar"></fa-icon>&nbsp;
   </a>
@@ -29,7 +26,7 @@
     <fa-icon class=" fa-2x" [icon]="trash"></fa-icon>
     &nbsp;
   </a>
-
+</section>
 
   <!-- routerLink="/oferta/edicion-ofertas/{{oferta.idOferta}}/{{oferta.tipo}}" -->
 

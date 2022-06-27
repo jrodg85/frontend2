@@ -16,7 +16,7 @@
       <div *ngIf="oferta.tituloOferta" class="invalid-feedback">
       </div>
     </div>
-    <div class="form-group col-md-3" *ngIf="ofertaForm && ofertaForm.value.type == 1">
+    <div class="form-group col-md-3" *ngIf="ofertaForm && type == 2">
       <section>
         <div class="">
           <label for="precioDeVenta">PRECIO DE VENTA &nbsp; </label>
@@ -26,7 +26,7 @@
       </section>
     </div>
 
-    <div *ngIf="ofertaForm && ofertaForm.value.type == 2">
+    <div *ngIf="ofertaForm && type == 1">
       <div class="form-group col-md-3">
         <label>PRECIO ALQUILER MENSUAL</label>
         <input type="number" formControlName="precioAlquilerMensual" class="form-control" placeholder="Precio de alquiler €/mes"
@@ -34,19 +34,19 @@
       </div>
 
       <div class="form-group col-md-3">
-        <label>UREA</label>
-        <input type="number" formControlName="ure" class="form-control" placeholder="urea"
+        <label>MESES FIANZA</label>
+        <input type="number" formControlName="mesesFianza" class="form-control" placeholder="urea"
           [ngClass]="{'is-invalid': oferta.idOferta}" />
       </div>
 
     </div>
 
     <section #botones>
-      <button type="reset" class="btn">Borrar</button>&nbsp;&nbsp;&nbsp;&nbsp;
-      <button class="btn btn-primary">Aceptar</button>
+      <button type="reset" class="btn btn-danger">Borrar</button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="submit" class="btn btn-primary">Aceptar</button>
     </section>
   </form>
-  venta:{{ofertaForm && ofertaForm.value.type == 2}}
-  Alquiler:{{ofertaForm && ofertaForm.value.type == 1}}
+  <!-- venta:{{ofertaForm && ofertaForm.value.type == 2}}
+  Alquiler:{{ofertaForm && ofertaForm.value.type == 1}} -->
 
 </body>

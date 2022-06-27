@@ -46,7 +46,7 @@ export class VentaService {
   create(oferta: VentaImpl):  Observable<any>  {
     const url = `${this.host}ofertas_de_venta`;
 
-    ;
+    debugger;
     return this.http.post<any>(url, oferta);
   }
   update(venta: VentaImpl, id: number) : Observable<any>  {

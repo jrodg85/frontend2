@@ -14,7 +14,7 @@ const routes: Routes = [
     component: OfertasComponent,
   },
     {
-    path: 'ofertas-form/:type/:idVivienda',
+    path: 'ofertas-form/:idVivienda/:type',
     component: OfertaFormComponent,
   },
   {

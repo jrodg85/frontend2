@@ -1,7 +1,11 @@
 <p>ofertas works!</p>
-<a routerLink="/ofertas/nueva-oferta/1" class="button">Añadir nueva Oferta de Alquiler:</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a routerLink="/ofertas/nueva-oferta/1" class="btn btn-success">Añadir nueva Oferta de Alquiler</a>
 <br>
-<a routerLink="/ofertas/nueva-oferta/2" class="button">Añadir nueva Oferta de venta</a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a routerLink="/ofertas/nueva-oferta/2" class="btn btn-success">Añadir nueva Oferta de venta</a>
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<h2>&nbsp;&nbsp;&nbsp;&nbsp;OFERTAS</h2>
 <!-- <header>
   <a routerLink="ver" class="button">ANALITICAS</a>
   <a routerLink="nuevo" class="button">NUEVA ANALITICA</a>
@@ -20,7 +24,6 @@
  -->
 <body>
   <router-outlet></router-outlet>
-  <br><br><br>
 <div class="content-ofertas">
   <div *ngFor="let oferta of todasOfertas">
     <app-oferta-item [oferta]="oferta" (ofertaEliminar)="onOfertaEliminar($event)"

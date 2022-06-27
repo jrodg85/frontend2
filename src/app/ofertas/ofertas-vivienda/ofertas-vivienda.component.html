@@ -1,40 +1,45 @@
 <p>ofertas-vivienda works!</p>
 
-<a routerLink="ofertas-form/1/:idVivienda" class="button">Añadir nueva Oferta de Alquiler</a>
+<a routerLink="/ofertas/ofertas-form/{{id}}/1" class="btn btn-success">Añadir nueva Oferta de Alquiler a esta vivienda</a>
 <br>
-<a routerLink="ofertas-form/2/:idVivienda" class="button">Añadir nueva Oferta de Venta</a>
-
+<br>
+<a routerLink="/ofertas/ofertas-form/{{id}}/2" class="btn btn-success">Añadir nueva Oferta de Venta a esta vivienda</a>
+<br>
+<br>
+<h4>DETALLES DE VIVIENDA</h4>
 <router-outlet></router-outlet>
-
-<div class="content-ofertas row">
-  <div class="Provincia col" *ngIf="provincia">PROVINCIA:</div>
-  <div class="provincia col">{{ provincia }}</div>
+<div class=" col-6 coutainer-fluid">
+  <div class="content-ofertas row border-bottom border-dark countainer-fluid">
+    <div class="Provincia col-3 countainer-fluid" *ngIf="provincia">PROVINCIA:</div>
+    <div class="provincia col-3 countainer-fluid">{{ provincia }}</div>
+  </div>
+  <div class="content-ofertas row border-bottom border-dark countainer-fluid">
+    <div class="Ciudad col-3 countainer-fluid" *ngIf="ciudad">CIUDAD:</div>
+    <div class="ciudad col-3 countainer-fluid">{{ ciudad }}</div>
+  </div>
+  <div class="content-ofertas row border-bottom border-dark countainer-fluid">
+      <div class="Direccion col-3 countainer-fluid" *ngIf="direccion">DIRECCION:</div>
+    <div class="direccion col-3 countainer-fluid">{{ direccion }}</div>
+  </div>
+  <div class="content-ofertas row border-bottom border-dark countainer-flui">
+    <div class="codigoPostal col-3 countainer-fluid" *ngIf="codigoPostal">CODIGO POSTAL:</div>
+    <div class="codigoPostal col-3 countainer-fluid">{{ codigoPostal }}</div>
+  </div>
+  <div class="content-ofertas row border-bottom border-dark countainer-flui">
+    <div class="IdReferenciaCatastral col-3 countainer-fluid" *ngIf="idReferenciaCatastral">REF. CATASTRAL:</div>
+    <div class="idReferenciaCatastral col-3 countainer-fluid">{{ idReferenciaCatastral }}</div>
+  </div>
+  <div class="content-ofertas row border-bottom border-dark countainer-flui">
+    <div class="Superficie col-3 countainer-fluid" *ngIf="superficie">SUPERFICIE:</div>
+    <div class="superficie col-3 countainer-fluid">{{ superficie }}</div>
+  </div>
 </div>
-<div class="content-ofertas row">
-  <div class="Ciudad col" *ngIf="ciudad">CIUDAD:</div>
-  <div class="ciudad col">{{ ciudad }}</div>
-</div>
-<div class="content-ofertas row">
-    <div class="Direccion col" *ngIf="direccion">DIRECCION:</div>
-  <div class="direccion col">{{ direccion }}</div>
-</div>
-<div class="content-ofertas row">
-  <div class="codigoPostal col" *ngIf="codigoPostal">CODIGO POSTAL:</div>
-  <div class="codigoPostal col">{{ codigoPostal }}</div>
-</div>
-<div class="content-ofertas row">
-  <div class="IdReferenciaCatastral col" *ngIf="idReferenciaCatastral">REF. CATASTRAL:</div>
-  <div class="idReferenciaCatastral col">{{ idReferenciaCatastral }}</div>
-</div>
-<div class="content-ofertas row">
-  <div class="Superficie col" *ngIf="superficie">SUPERFICIE:</div>
-  <div class="superficie col">{{ superficie }}</div>
-</div>
-
+<br>
+<br>
 <section>
 
   <div class="row col-md-5">
-    <div class="col-md-12">OFERTAS DE LA VIVIENDA</div>
+    <h4>OFERTAS DE LA VIVIENDA</h4>
   </div>
 </section>
 

@@ -3,13 +3,16 @@
   <br />
   <form [formGroup]="ofertaForm" (ngSubmit)="onSubmit()">
 
-    <div class="form-group col-md-3" *ngIf="type == 1">
-
-      <div class="form-group col-md-3">
+    <div class="form-group col-md-6" *ngIf="type == 1">
+      <div class="form-group col-md-6">
+        <label>TITULO OFERTA</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" formControlName="tituloOferta" class="form-control" placeholder="titluloOferta" />
+      </div>
+      <div class="form-group col-md-6">
         <label>PRECIO ALQUILER MENSUAL</label>&nbsp;
         <input type="number" formControlName="precioAlquilerMensual" class="form-control" placeholder=" precio alquiler" />
       </div>
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-6">
         <label>MESES FIANZA</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <input type="number" formControlName="mesesFianza" class="form-control" placeholder=" meses fianza" />
@@ -20,6 +23,10 @@
 
     <div *ngIf="type == 2">
 
+      <div class="form-group col-md-3">
+        <label>TITULO OFERTA</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" formControlName="tituloOferta" class="form-control" placeholder="titluloOferta" />
+      </div>
       <div class="form-group col-md-3">
         <label>VENTA</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="number" formControlName="precioDeVenta" class="form-control" placeholder="precio venta" />

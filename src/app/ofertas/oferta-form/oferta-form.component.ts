@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ViviendaImpl } from 'src/app/viviendas/models/vivienda-impl';
 import { ViviendaService } from 'src/app/viviendas/service/vivienda.service';
 import { environment } from 'src/environments/environment';
@@ -21,46 +22,49 @@ export class OfertaFormComponent implements OnInit {
   public ofertaForm: FormGroup;
   private host: string = environment.host;
   public urlEndPoint: string = `${this.host}ofertas`;
+  type: number = 0;
+  idVivienda: number=0;
+  public viviendaSeleccionada: ViviendaImpl= new ViviendaImpl(0,"","","","",0,"",0,[],"");
 
-  public viviendas: ViviendaImpl[] = [];
 
   //public empleadoNombre:
-
-  public tipos: Tipo[] = [
-    { id: 0, description: 'Seleccione tipo de Oferta' },
-    { id: 1, description: 'OFERTA_DE_ALQUILER' },
-    { id: 2, description: 'OFERTA_DE_VENTA' },
-  ];
 
   submitted: boolean = false;
 
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private viviendaService: ViviendaService,
     private ventaService: VentaService,
     private alquilerService: AlquilerService
   ) {
+
     this.ofertaForm = this.formBuilder.group({
-      type: ['', Validators.required],
       tituloOferta: ['', Validators.required],
       precioDeVenta: [0],
       precioAlquilerMensual: [0],
-      mesesFianza: [0],
-      vivienda: ['', Validators.required]
-    });
+      mesesFianza: [0]
+    })
   }
 
   ngOnInit(): void {
-    this.viviendaService.getViviendas().subscribe(
-      (response) => {
-        ;
-        this.viviendas = this.viviendaService.extraerViviendas(response);
-        ;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+    this.type = this.route.snapshot.params['type'];
+    this.idVivienda = this.route.snapshot.params['idVivienda'];
+
+    console.log(this.type);
+debugger;
+    if(this.idVivienda){
+      this.viviendaService.findById(this.idVivienda).subscribe(
+        (response) => {
+          debugger;
+          this.viviendaSeleccionada = this.viviendaService.mapearVivienda(response);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    }
   }
 
   get form() {
@@ -68,28 +72,24 @@ export class OfertaFormComponent implements OnInit {
   }
 
   public onSubmit() {
-    ;
+    debugger;
 
     this.submitted = true;
 
-    const servicioEntity = this.ofertaForm.value;
-    ;
-   /*  if (confirm('Revise los datos antes de aceptar')) { */
-      ;
-      if (!this.ofertaForm.invalid || true) {
-        if (this.ofertaForm.value.type == 2) {
+    const ofertaEntity = this.ofertaForm.value;
+      if (!this.ofertaForm.invalid ) {
+        if (this.type == 2) {
           const venta: VentaImpl = new VentaImpl(
             0,
-            servicioEntity.tituloOferta,
-            servicioEntity.precioDeVenta,
-            servicioEntity.url,
-            servicioEntity.vivienda
-
-
+            ofertaEntity.tituloOferta,
+            this.viviendaSeleccionada.urlVivienda,
+            '',
+            ofertaEntity.precioDeVenta
           );
+          debugger;
           this.ventaService.create(venta).subscribe(
             () => {
-              console.log('OK');
+              this.router.navigate([`/ofertas/ofertas-vivienda/${this.viviendaSeleccionada.idVivienda}`]);
             },
             (error: any) => {
               console.error(error);
@@ -98,15 +98,16 @@ export class OfertaFormComponent implements OnInit {
         } else {
           const alquiler: AlquilerImpl = new AlquilerImpl(
             0,
-            servicioEntity.tituloOferta,
-            servicioEntity.url,
-            servicioEntity.precioAlquilerMensual,
-            servicioEntity.mesesFianza,
-            servicioEntity.vivienda
+            ofertaEntity.tituloOferta,
+            this.viviendaSeleccionada.urlVivienda,
+            '',
+            ofertaEntity.precioAlquilerMensual,
+            ofertaEntity.mesesFianza,
           );
+          debugger;
           this.alquilerService.create(alquiler).subscribe(
             () => {
-              console.log('OK');
+            this.router.navigate([`/ofertas/ofertas-vivienda/${this.viviendaSeleccionada.idVivienda}`]);
             },
             (error) => {
               console.error(error);
@@ -126,7 +127,6 @@ export class OfertaFormComponent implements OnInit {
       JSON.stringify(this.analiticaForm.value, null, 4)
     ); */
 
-    console.warn('Your order has been submitted', customerData);
   }
 
   OnReset() {
@@ -134,60 +134,9 @@ export class OfertaFormComponent implements OnInit {
     this.ofertaForm.reset();
   }
 
-  cambiaTipo(event: any) {
-    const val = event.currentTarget.value;
-    console.log(this.ofertaForm.value.type);
-    ;
-    if (this.ofertaForm.value.type == 2) {
-      this.ofertaForm = this.formBuilder.group({
-        type: [this.ofertaForm.value.type, [Validators.required]],
-        tituloOferta: [
-          this.ofertaForm.value.tituloOferta,
-          [Validators.required,
-          Validators.maxLength(100),
-          Validators.minLength(5),
-        ]
-        ],
-        precioDeVenta: [
-          this.ofertaForm.value.precioDeVenta,
-          [Validators.required,
-          Validators.maxLength(32),
-          Validators.minLength(1),
-          Validators.min(0),]
-        ],
-        precioAlquilerMensual: [],
-        mesesFianza: [],
-        vivienda: [this.ofertaForm.value.vivienda, [Validators.required]]
-      });
-    } else {
-      this.ofertaForm = this.formBuilder.group({
-        type: [this.ofertaForm.value.type, [Validators.required]],
-        tituloOferta: [
-          this.ofertaForm.value.tituloOferta,
-          [Validators.required,
-          Validators.maxLength(100),
-          Validators.minLength(5)]
-        ],
-        precioDeVenta: [],
-        precioAlquilerMensual: [
-          this.ofertaForm.value.precioAlquilerMensual,
-          [Validators.required,
-          Validators.minLength(0),
-          Validators.maxLength(10),
-          Validators.min(0),]
-        ],
-        mesesFianza: [
-          this.ofertaForm.value.mesesFianza,
-          [Validators.required,
-          Validators.min(0),
-          Validators.max(12)]
-        ],
-        vivienda: [this.ofertaForm.value.vivienda, [Validators.required]]
-      });
-    }
-  }
+
+  cambiaViviendaSeleccionada(event: any) {
+    this.viviendaSeleccionada = event.currentTarget.value;
 }
-function customerData(arg0: string, customerData: any) {
-  throw new Error('Function not implemented.');
 }
 

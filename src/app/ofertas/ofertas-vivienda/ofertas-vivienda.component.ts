@@ -20,7 +20,6 @@ export class OfertasViviendaComponent implements OnInit {
   todasOfertas: OfertaImpl[] = [];
 public id: string = '';
 
-
   public provincia: string = '';
   public ciudad: string = '';
   public direccion: string = '';
@@ -41,6 +40,7 @@ public id: string = '';
 
   ngOnInit(): void {
     this.id=this.activateRoute.snapshot.params['id'];
+    debugger;
     this.cargarVivienda();
     this.cargarOferta();
   }

@@ -30,7 +30,10 @@ export class OfertaItemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+
     console.log(this.oferta);
+
   }
 
   public onSubmit() {

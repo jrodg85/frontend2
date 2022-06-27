@@ -9,7 +9,7 @@ import { Tipo } from '../models/tipo';
 import { VentaImpl } from '../models/venta-impl';
 import { AlquilerService } from '../service/alquiler.service';
 import { VentaService } from '../service/venta.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-oferta',
@@ -21,8 +21,8 @@ export class CrearOfertaComponent implements OnInit {
   public nuevaOfertaForm: FormGroup;
   private host: string = environment.host;
   public urlEndPoint: string = `${this.host}ofertas`;
-
   public viviendas: ViviendaImpl[] = [];
+  public viviendaSeleccionada: ViviendaImpl= new ViviendaImpl(0,"","","","",0,"",0,[],"");
 
   //public empleadoNombre:
 
@@ -31,6 +31,7 @@ export class CrearOfertaComponent implements OnInit {
   submitted: boolean = false;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private viviendaService: ViviendaService,
@@ -38,7 +39,7 @@ export class CrearOfertaComponent implements OnInit {
     private alquilerService: AlquilerService
   ) {
     this.nuevaOfertaForm = this.formBuilder.group({
-      type: ['', Validators.required],
+      //type: this.route.snapshot.params['type'],
       tituloOferta: ['', Validators.required],
       precioDeVenta: [0],
       precioAlquilerMensual: [0],
@@ -48,14 +49,12 @@ export class CrearOfertaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.type = parseInt(this.route.snapshot.params['type']);
+    this.type = this.route.snapshot.params['type'];
     console.log(this.type);
 
     this.viviendaService.getViviendas().subscribe(
       (response) => {
-        ;
         this.viviendas = this.viviendaService.extraerViviendas(response);
-        ;
       },
       (error) => {
         console.error(error);
@@ -68,7 +67,6 @@ export class CrearOfertaComponent implements OnInit {
   }
 
   public onSubmit() {
-    ;
 
     this.submitted = true;
 
@@ -77,19 +75,17 @@ export class CrearOfertaComponent implements OnInit {
    /*  if (confirm('Revise los datos antes de aceptar')) { */
       ;
       if (!this.nuevaOfertaForm.invalid || true) {
-        if (this.nuevaOfertaForm.value.type == 2) {
+        if (this.type == 2) {
           const venta: VentaImpl = new VentaImpl(
             0,
             nuevaOfertaEntity.tituloOferta,
-            nuevaOfertaEntity.precioDeVenta,
-            nuevaOfertaEntity.url,
-            nuevaOfertaEntity.vivienda
-
-
+            nuevaOfertaEntity.vivienda,
+            '',
+            nuevaOfertaEntity.precioDeVenta
           );
           this.ventaService.create(venta).subscribe(
             () => {
-              console.log('OK');
+              this.router.navigate([`/ofertas`])
             },
             (error: any) => {
               console.error(error);
@@ -99,14 +95,14 @@ export class CrearOfertaComponent implements OnInit {
           const alquiler: AlquilerImpl = new AlquilerImpl(
             0,
             nuevaOfertaEntity.tituloOferta,
-            nuevaOfertaEntity.url,
+            nuevaOfertaEntity.vivienda,
+            '',
             nuevaOfertaEntity.precioAlquilerMensual,
-            nuevaOfertaEntity.mesesFianza,
-            nuevaOfertaEntity.vivienda
+            nuevaOfertaEntity.mesesFianza
           );
           this.alquilerService.create(alquiler).subscribe(
             () => {
-              console.log('OK');
+              this.router.navigate([`/ofertas`])
             },
             (error) => {
               console.error(error);
@@ -126,7 +122,6 @@ export class CrearOfertaComponent implements OnInit {
       JSON.stringify(this.analiticaForm.value, null, 4)
     ); */
 
-    console.warn('Your order has been submitted', customerData);
   }
 
   OnReset() {
@@ -135,58 +130,6 @@ export class CrearOfertaComponent implements OnInit {
   }
 
   cambiaTipo(event: any) {
-    const val = event.currentTarget.value;
-    console.log(this.nuevaOfertaForm.value.type);
-    ;
-    if (this.nuevaOfertaForm.value.type == 2) {
-      this.nuevaOfertaForm = this.formBuilder.group({
-        type: [this.nuevaOfertaForm.value.type, [Validators.required]],
-        tituloOferta: [
-          this.nuevaOfertaForm.value.tituloOferta,
-          [Validators.required,
-          Validators.maxLength(100),
-          Validators.minLength(5),
-        ]
-        ],
-        precioDeVenta: [
-          this.nuevaOfertaForm.value.precioDeVenta,
-          [Validators.required,
-          Validators.maxLength(32),
-          Validators.minLength(1),
-          Validators.min(0),]
-        ],
-        precioAlquilerMensual: [],
-        mesesFianza: [],
-        vivienda: [this.nuevaOfertaForm.value.vivienda, [Validators.required]]
-      });
-    } else {
-      this.nuevaOfertaForm = this.formBuilder.group({
-        type: [this.nuevaOfertaForm.value.type, [Validators.required]],
-        tituloOferta: [
-          this.nuevaOfertaForm.value.tituloOferta,
-          [Validators.required,
-          Validators.maxLength(100),
-          Validators.minLength(5)]
-        ],
-        precioDeVenta: [],
-        precioAlquilerMensual: [
-          this.nuevaOfertaForm.value.precioAlquilerMensual,
-          [Validators.required,
-          Validators.minLength(0),
-          Validators.maxLength(10),
-          Validators.min(0),]
-        ],
-        mesesFianza: [
-          this.nuevaOfertaForm.value.mesesFianza,
-          [Validators.required,
-          Validators.min(0),
-          Validators.max(12)]
-        ],
-        vivienda: [this.nuevaOfertaForm.value.vivienda, [Validators.required]]
-      });
-    }
-  }
+    this.viviendaSeleccionada = event.currentTarget.value;
 }
-function customerData(arg0: string, customerData: any) {
-  throw new Error('Function not implemented.');
 }

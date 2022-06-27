@@ -10,7 +10,7 @@ export class VentaImpl extends OfertaImpl  {
   precioDeVenta: number;
   ;
 
-  constructor(idOferta:number , tituloOferta: string , vivienda: string , urlOferta:string , precioDeVenta: number,){
+  constructor(idOferta:number , tituloOferta: string , vivienda: string , urlOferta:string , precioDeVenta: number){
     super(idOferta, tituloOferta, vivienda, urlOferta);
     super.tipo=2;
     this.precioDeVenta=precioDeVenta;
