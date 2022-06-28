@@ -2,7 +2,6 @@
   <h3>OFERTAS</h3>
   <br />
   <form [formGroup]="ofertaForm" (ngSubmit)="onSubmit()">
-
     <div class="form-group col-md-6" *ngIf="type == 1">
       <div class="form-group col-md-6">
         <label>TITULO OFERTA</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -18,11 +17,8 @@
           <input type="number" formControlName="mesesFianza" class="form-control" placeholder=" meses fianza" />
       </div>
       <app-alquiler></app-alquiler>
-
     </div>
-
     <div *ngIf="type == 2">
-
       <div class="form-group col-md-3">
         <label>TITULO OFERTA</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="text" formControlName="tituloOferta" class="form-control" placeholder="titluloOferta" />
@@ -31,14 +27,12 @@
         <label>VENTA</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="number" formControlName="precioDeVenta" class="form-control" placeholder="precio venta" />
       </div>
-
     </div>
     <app-venta></app-venta>
     <br>
     <section #botones>
-      <button type="reset" class="btn">Borrar</button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="reset" class="btn btn-danger">Borrar</button>&nbsp;&nbsp;&nbsp;&nbsp;
       <button type="submit" class="btn btn-primary">Aceptar</button>
     </section>
   </form>
-
 </body>

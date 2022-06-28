@@ -11,10 +11,14 @@ export class ViviendaComponent implements OnInit {
 
   @Input() vivienda: Vivienda = new ViviendaImpl(0,"","","","",0,"",0,[],"");
 	@Output() viviendaEliminar = new EventEmitter<Vivienda>()
+
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
   eliminar(): void {
     this.viviendaEliminar.emit(this.vivienda);
   }

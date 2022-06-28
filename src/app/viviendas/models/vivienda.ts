@@ -1,5 +1,6 @@
 export interface Vivienda {
 
+
   idVivienda: number;
   propietario: string;
   provincia: string;
@@ -10,5 +11,6 @@ export interface Vivienda {
   superficie: number;
   ofertasDeVivienda: any[];
   urlVivienda: string;
+
 
 }

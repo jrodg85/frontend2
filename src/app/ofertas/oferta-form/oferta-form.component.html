@@ -1,52 +1,40 @@
-<a>oferta form</a>
 <body>
   <h3>OFERTAS</h3>
   <br/>
-
-
   <h4>OFERTAS</h4>
   <br/>
   <form [formGroup]="ofertaForm" (ngSubmit)="onSubmit()">
-
+  <div class="form-group col-md-3">
+    <label>TITULO OFERTA</label>
+    <input type="text" formControlName="tituloOferta" class="form-control" placeholder="titulo de la oferta"
+      [ngClass]="{'is-invalid': oferta.idOferta}" />
+    <div *ngIf="oferta.tituloOferta" class="invalid-feedback">
+    </div>
+  </div>
+  <div class="form-group col-md-3" *ngIf="ofertaForm && type == 2">
+    <section>
+      <div class="">
+        <label for="precioDeVenta">PRECIO DE VENTA &nbsp; </label>
+        <input type="text" formControlName="precioDeVenta" class="form-control" placeholder="precio de venta €"
+          [ngClass]="{'is-invalid': oferta.idOferta}" />
+      </div>
+    </section>
+  </div>
+  <div *ngIf="ofertaForm && type == 1">
     <div class="form-group col-md-3">
-      <label>TITULO OFERTA</label>
-      <input type="text" formControlName="tituloOferta" class="form-control" placeholder="titulo de la oferta"
+      <label>PRECIO ALQUILER MENSUAL</label>
+      <input type="number" formControlName="precioAlquilerMensual" class="form-control" placeholder="Precio de alquiler €/mes"
         [ngClass]="{'is-invalid': oferta.idOferta}" />
-
-      <div *ngIf="oferta.tituloOferta" class="invalid-feedback">
-      </div>
     </div>
-    <div class="form-group col-md-3" *ngIf="ofertaForm && type == 2">
-      <section>
-        <div class="">
-          <label for="precioDeVenta">PRECIO DE VENTA &nbsp; </label>
-          <input type="text" formControlName="precioDeVenta" class="form-control" placeholder="precio de venta €"
-            [ngClass]="{'is-invalid': oferta.idOferta}" />
-        </div>
-      </section>
+    <div class="form-group col-md-3">
+      <label>MESES FIANZA</label>
+      <input type="number" formControlName="mesesFianza" class="form-control" placeholder="urea"
+        [ngClass]="{'is-invalid': oferta.idOferta}" />
     </div>
-
-    <div *ngIf="ofertaForm && type == 1">
-      <div class="form-group col-md-3">
-        <label>PRECIO ALQUILER MENSUAL</label>
-        <input type="number" formControlName="precioAlquilerMensual" class="form-control" placeholder="Precio de alquiler €/mes"
-          [ngClass]="{'is-invalid': oferta.idOferta}" />
-      </div>
-
-      <div class="form-group col-md-3">
-        <label>MESES FIANZA</label>
-        <input type="number" formControlName="mesesFianza" class="form-control" placeholder="urea"
-          [ngClass]="{'is-invalid': oferta.idOferta}" />
-      </div>
-
-    </div>
-
+  </div>
     <section #botones>
       <button type="reset" class="btn btn-danger">Borrar</button>&nbsp;&nbsp;&nbsp;&nbsp;
       <button type="submit" class="btn btn-primary">Aceptar</button>
     </section>
   </form>
-  <!-- venta:{{ofertaForm && ofertaForm.value.type == 2}}
-  Alquiler:{{ofertaForm && ofertaForm.value.type == 1}} -->
-
 </body>

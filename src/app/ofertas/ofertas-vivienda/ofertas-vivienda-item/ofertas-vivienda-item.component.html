@@ -7,28 +7,16 @@
   <div class="col-md-3">
     {{ oferta.tituloOferta }}
   </div>
-
   <div class="col-md-4">
     <a data-bs-toggle="modal" data-bs-target="#modalVerOferta" (click)="obtenerOferta()" >
     &nbsp;<fa-icon class=" fa-2x" [icon]="mirar" ></fa-icon>&nbsp;
-  </a>
-
-   <a data-bs-toggle="modal" data-bs-target="#modalModificar" (click)="ofertaSeleccionada.emit(oferta) " routerLink="/ofertas/edicion-ofertas/{{oferta.idOferta}}/{{oferta.tipo}}">
-    &nbsp;<fa-icon class=" fa-2x" [icon]="modificar"></fa-icon>&nbsp;
-  </a>
-
-
-  <a   type="button" (click)="borrarOferta(oferta.idOferta)" routerLink="/ofertas" >
-    &nbsp;&nbsp;
-    <fa-icon class=" fa-2x" [icon]="trash"></fa-icon>
-    &nbsp;
-  </a>
+    </a>
+    <a data-bs-toggle="modal" data-bs-target="#modalModificar" (click)="ofertaSeleccionada.emit(oferta) " routerLink="/ofertas/edicion-ofertas/{{oferta.idOferta}}/{{oferta.tipo}}">
+      &nbsp;<fa-icon class=" fa-2x" [icon]="modificar"></fa-icon>&nbsp;
+    </a>
+    <a   type="button" (click)="borrarOferta(oferta.idOferta)" routerLink="/ofertas" >
+      &nbsp;&nbsp;
+      <fa-icon class=" fa-2x" [icon]="trash"></fa-icon>&nbsp;
+    </a>
   </div>
-
-  <!-- <div class="col-sm-4">
-    <a class="" data-bs-toggle="modal" data-bs-target="#modalNegocio" (click)="servicioSeleccionado.emit(servicio)"  >
-      &nbsp;<fa-icon class=" fa-2x" [icon]="eye"></fa-icon>&nbsp;
-    </a> -->
-
-
-  </div>
+</div>

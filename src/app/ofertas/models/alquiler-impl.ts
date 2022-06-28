@@ -15,9 +15,12 @@ constructor(idOferta:number , tituloOferta: string , vivienda: string , urlOfert
   this.precioAlquilerMensual=precioAlquilerMensual;
   this.mesesFianza=mesesFianza;
 }
+
+
 getIdAlquiler(url: string): string {
   url = url.slice(0, url.length - 1)
   return url.slice(url.lastIndexOf('/') + 1, url.length);
 }
+
 
 }

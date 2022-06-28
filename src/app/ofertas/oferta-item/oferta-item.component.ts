@@ -15,7 +15,6 @@ export class OfertaItemComponent implements OnInit {
   @Output() ofertaEditar = new EventEmitter<OfertaImpl>();
 
 
-
   pencil = faPencil;
   mirar = faEye;
   trash = faTrashCan;
@@ -24,38 +23,32 @@ export class OfertaItemComponent implements OnInit {
   x = faX;
   modificar = faFilePen;
 
+
   constructor(
     private ofertaService: OfertaService
-
   ) { }
 
+
   ngOnInit(): void {
-
-
-    console.log(this.oferta);
-
   }
 
+
   public onSubmit() {
-
-
-
   }
 
   borrarOferta(oferta: OfertaImpl["idOferta"]): void {
-    //    this.negocioService.deleteNegocio(this.negocioItem.urlNegocio);
-    /* if (confirm('Confirme para eliminar')) { */
       this.ofertaEliminar.emit(this.oferta);
-
-
-    /* } */
-
   }
+
+
   obtenerOferta() {
     this.ofertaSeleccionada.emit(this.oferta);
   }
+
+
   modificarOferta(oferta: OfertaImpl): void {
-    //this.ofertaService.patchOferta(oferta).subscribe();
     this.ofertaSeleccionada.emit(oferta);
   }
+
+
 }

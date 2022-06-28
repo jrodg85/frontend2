@@ -1,48 +1,41 @@
-<header>
+<!-- <header>
   <a routerLink="/viviendas/vivienda-form" class="button">Añadir nueva Vivienda</a>
-  </header>
-  <body>
-
-  <router-outlet></router-outlet>
-
-  <div class="col-xl-12 container-fluid"><br><br><br>
-  <div class="row">
-    <div class="col-2 col-sm-10 col-md-2 col-lg-2 col-xl-2"><b>PROPIETARIO</b></div>
-    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"><b>PROVINCIA</b></div>
-    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2"><b>CIUDAD</b></div>
-    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2"><b>DIRECCION</b></div>
-    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"><b>CODIGO POSTAL</b></div>
-    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2"><b>CATASTRO</b></div>
-    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"><b>SUPERFICIE</b></div>
-    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"><b></b></div>
-  </div>
-
-  <div *ngFor="let vivienda of viviendas">
-    <app-vivienda-item [vivienda]="vivienda" (viviendaSeleccionada)="verDatos($event)" (viviendaEliminar)="onViviendaEliminar($event)"></app-vivienda-item>
-  </div>
-  </div>
-
-
-  <!-- Modal -->
-  <div class="modal fade" id="modalVivienda" tabindex="-1" role="dialog" aria-labelledby="datosVivienda"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="datosVivienda">Datos Completos Vivienda</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <app-vivienda [vivienda]="viviendaVerDatos" ></app-vivienda>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        </div>
+</header> -->
+<body>
+<router-outlet></router-outlet>
+<div class="col-xl-12 container-fluid"><br><br><br>
+<div class="row">
+  <div class="col-2 col-sm-10 col-md-2 col-lg-2 col-xl-2"><b>PROPIETARIO</b></div>
+  <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"><b>PROVINCIA</b></div>
+  <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2"><b>CIUDAD</b></div>
+  <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2"><b>DIRECCION</b></div>
+  <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"><b>CODIGO POSTAL</b></div>
+  <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2"><b>CATASTRO</b></div>
+  <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"><b>SUPERFICIE</b></div>
+  <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"><b></b></div>
+</div>
+<div *ngFor="let vivienda of viviendas">
+  <app-vivienda-item [vivienda]="vivienda" (viviendaSeleccionada)="verDatos($event)" (viviendaEliminar)="onViviendaEliminar($event)"></app-vivienda-item>
+</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modalVivienda" tabindex="-1" role="dialog" aria-labelledby="datosVivienda"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="datosVivienda">Datos Completos Vivienda</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-vivienda [vivienda]="viviendaVerDatos" ></app-vivienda>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
-
-
-  </body>
+</div>
+</body>

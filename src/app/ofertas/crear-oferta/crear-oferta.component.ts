@@ -16,6 +16,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './crear-oferta.component.html',
   styleUrls: ['./crear-oferta.component.css']
 })
+
+
 export class CrearOfertaComponent implements OnInit {
   public oferta: OfertaImpl = new OfertaImpl(0,"","","");
   public nuevaOfertaForm: FormGroup;
@@ -23,12 +25,9 @@ export class CrearOfertaComponent implements OnInit {
   public urlEndPoint: string = `${this.host}ofertas`;
   public viviendas: ViviendaImpl[] = [];
   public viviendaSeleccionada: ViviendaImpl= new ViviendaImpl(0,"","","","",0,"",0,[],"");
-
-  //public empleadoNombre:
-
   public type: number=0;
-
   submitted: boolean = false;
+
 
   constructor(
     private router: Router,
@@ -37,21 +36,18 @@ export class CrearOfertaComponent implements OnInit {
     private viviendaService: ViviendaService,
     private ventaService: VentaService,
     private alquilerService: AlquilerService
-  ) {
-    this.nuevaOfertaForm = this.formBuilder.group({
-      //type: this.route.snapshot.params['type'],
+    ) {
+      this.nuevaOfertaForm = this.formBuilder.group({
       tituloOferta: ['', Validators.required],
       precioDeVenta: [0],
       precioAlquilerMensual: [0],
       mesesFianza: [0],
       vivienda: ['', Validators.required]
-    });
+      });
   }
 
   ngOnInit(): void {
     this.type = this.route.snapshot.params['type'];
-    console.log(this.type);
-
     this.viviendaService.getViviendas().subscribe(
       (response) => {
         this.viviendas = this.viviendaService.extraerViviendas(response);
@@ -67,69 +63,57 @@ export class CrearOfertaComponent implements OnInit {
   }
 
   public onSubmit() {
-
     this.submitted = true;
-
     const nuevaOfertaEntity = this.nuevaOfertaForm.value;
-    ;
-   /*  if (confirm('Revise los datos antes de aceptar')) { */
-      ;
-      if (!this.nuevaOfertaForm.invalid || true) {
-        if (this.type == 2) {
-          const venta: VentaImpl = new VentaImpl(
-            0,
-            nuevaOfertaEntity.tituloOferta,
-            nuevaOfertaEntity.vivienda,
-            '',
-            nuevaOfertaEntity.precioDeVenta
-          );
-          this.ventaService.create(venta).subscribe(
-            () => {
-              this.router.navigate([`/ofertas`])
-            },
-            (error: any) => {
-              console.error(error);
-            }
-          );
-        } else {
-          const alquiler: AlquilerImpl = new AlquilerImpl(
-            0,
-            nuevaOfertaEntity.tituloOferta,
-            nuevaOfertaEntity.vivienda,
-            '',
-            nuevaOfertaEntity.precioAlquilerMensual,
-            nuevaOfertaEntity.mesesFianza
-          );
-          this.alquilerService.create(alquiler).subscribe(
-            () => {
-              this.router.navigate([`/ofertas`])
-            },
-            (error) => {
-              console.error(error);
-            }
-          );
-        }
+    if (!this.nuevaOfertaForm.invalid || true) {
+      if (this.type == 2) {
+        const venta: VentaImpl = new VentaImpl(
+          0,
+          nuevaOfertaEntity.tituloOferta,
+          nuevaOfertaEntity.vivienda,
+          '',
+          nuevaOfertaEntity.precioDeVenta
+        );
+        this.ventaService.create(venta).subscribe(
+          () => {
+            this.router.navigate([`/ofertas`])
+          },
+          (error: any) => {
+            console.error(error);
+          }
+        );
+      } else {
+        const alquiler: AlquilerImpl = new AlquilerImpl(
+          0,
+          nuevaOfertaEntity.tituloOferta,
+          nuevaOfertaEntity.vivienda,
+          '',
+          nuevaOfertaEntity.precioAlquilerMensual,
+          nuevaOfertaEntity.mesesFianza
+        );
+        this.alquilerService.create(alquiler).subscribe(
+          () => {
+            this.router.navigate([`/ofertas`])
+          },
+          (error) => {
+            console.error(error);
+          }
+        )
       }
-   /*  } */
-
-    //se para aqui si el formulario es invalido
+    }
     if (this.nuevaOfertaForm.invalid) {
       return;
     }
-    //display si hay exito
-   /*  alert(
-      'GUARDADO CON EXITO' +
-      JSON.stringify(this.analiticaForm.value, null, 4)
-    ); */
-
   }
+
 
   OnReset() {
     this.submitted = false;
     this.nuevaOfertaForm.reset();
   }
 
+
   cambiaTipo(event: any) {
     this.viviendaSeleccionada = event.currentTarget.value;
-}
+  }
 }

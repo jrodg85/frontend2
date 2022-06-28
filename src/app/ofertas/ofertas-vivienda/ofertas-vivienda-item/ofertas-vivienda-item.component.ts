@@ -10,10 +10,12 @@ import { OfertaService } from '../../service/oferta.service';
   styleUrls: ['./ofertas-vivienda-item.component.css']
 })
 export class OfertasViviendaItemComponent implements OnInit {
+
   @Input() oferta: OfertaImpl = new OfertaImpl(0, '','','');
   @Output() ofertaSeleccionada = new EventEmitter<OfertaImpl>();
   @Output() ofertaEliminar = new EventEmitter<OfertaImpl>();
   @Output() ofertaEditar = new EventEmitter<OfertaImpl>();
+
 
   pencil = faPencil;
   mirar = faEye;
@@ -22,18 +24,18 @@ export class OfertasViviendaItemComponent implements OnInit {
   trash2 = faTrash;
   x = faX;
   modificar = faFilePen;
-
   oferta$: Observable<any> = new Observable<any>();
   todasOfertas: OfertaImpl[] = [];
 
+
   constructor(
     private ofertaService: OfertaService
-
-
 ) { }
+
 
   ngOnInit(): void {
   }
+
 
   public onSubmit() {
 
@@ -42,15 +44,17 @@ export class OfertasViviendaItemComponent implements OnInit {
   borrarOferta(oferta: OfertaImpl["idOferta"]): void {
     /* if (confirm('Confirme para eliminar')) { */
       this.ofertaEliminar.emit(this.oferta);
-
-
-    /* } */
-
   }
+
+
   obtenerOferta() {
     this.ofertaSeleccionada.emit(this.oferta);
   }
+
+
   modificarOferta(oferta: OfertaImpl): void {
     this.ofertaService.patchOferta(oferta).subscribe();
   }
+
+
 }

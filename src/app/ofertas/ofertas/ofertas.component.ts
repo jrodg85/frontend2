@@ -12,10 +12,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./ofertas.component.css']
 })
 export class OfertasComponent implements OnInit {
-  todasOfertas: OfertaImpl[] = [];
 
+  todasOfertas: OfertaImpl[] = [];
   public venta: VentaImpl = new VentaImpl(0,"","","",0);
   public alquiler: AlquilerImpl = new AlquilerImpl(0,"","","",0,0);
+
 
   constructor(
     private alquilerService: AlquilerService,
@@ -23,10 +24,13 @@ export class OfertasComponent implements OnInit {
     private router: Router,
   ) {}
 
+
   ngOnInit(): void {
+
 
     this.getTodasOfertas();
   }
+
 
   getTodasOfertas(): void {
     this.todasOfertas = [];
@@ -34,7 +38,6 @@ export class OfertasComponent implements OnInit {
       this.todasOfertas.push(
         ...this.ventaService.extraerVenta(response)
       );
-
       this.alquilerService.getAlquiler().subscribe((response) => {
         ;
         this.todasOfertas.push(
@@ -43,6 +46,7 @@ export class OfertasComponent implements OnInit {
       });
     });
   }
+
 
   onOfertaEliminar(oferta: OfertaImpl) {
       debugger;
@@ -61,8 +65,9 @@ export class OfertasComponent implements OnInit {
     }
   }
 
+
   verOferta(oferta: OfertaImpl){
-    this.router.navigate ([`/ofertas/edicion-oferta/${oferta.idOferta}/${oferta.tipo}`]);
+    this.router.navigate([`/ofertas/edicion-oferta/${oferta.idOferta}/${oferta.tipo}`]);
   }
 
 

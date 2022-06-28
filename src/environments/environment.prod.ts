@@ -4,4 +4,3 @@ export const environment = {
   itemsPorPagina: 10
 };
 
-//done

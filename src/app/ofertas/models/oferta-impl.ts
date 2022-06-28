@@ -13,9 +13,11 @@ export class OfertaImpl {
     this.urlOferta=urlOferta;
     this.tipo = 0;
   }
+
+
   getIdOferta(urlOferta: string): string {
     return urlOferta.slice(urlOferta.lastIndexOf('/') + 1, urlOferta.length);
   }
 
+
 }
-//done

@@ -3,5 +3,5 @@ export interface Oferta {
   tipo: number;
   tituloOferta: string;
 
+
 }
-//done

@@ -9,18 +9,24 @@ import { VentaImpl } from '../models/venta-impl';
   providedIn: 'root'
 })
 export class VentaService {
+
+
   private host: string = environment.host;
   private urlEndPoint: string = `${this.host}ofertas_de_venta`;
 
+
   constructor(private http: HttpClient, private auxService: AuxiliarService) {}
+
 
   getVenta(): Observable<any> {
     return this.http.get<any>(this.urlEndPoint);
   }
 
+
   findById(idOferta: any) :Observable<any> {
     return this.http.get<any>(`${this.urlEndPoint}/${idOferta}`);
   }
+
 
   extraerVenta(respuestaApi: any): VentaImpl[] {
     const venta: VentaImpl[] = [];
@@ -29,6 +35,7 @@ export class VentaService {
     });
     return venta;
   }
+
 
   mapearVenta(ventaApi: any): VentaImpl {
     const url = ventaApi._links.self.href;
@@ -43,15 +50,17 @@ export class VentaService {
     );
   }
 
+
   create(oferta: VentaImpl):  Observable<any>  {
     const url = `${this.host}ofertas_de_venta`;
-
-    debugger;
     return this.http.post<any>(url, oferta);
   }
+
+
   update(venta: VentaImpl, id: number) : Observable<any>  {
     return this.http.put<any>(`${this.urlEndPoint}/${id}`, venta);
   }
+
 
   deleteVenta(id: number): Observable<any>{
     return this.http.delete<VentaImpl>(`${this.urlEndPoint}/${id}`).pipe(
@@ -62,11 +71,12 @@ export class VentaService {
         return throwError(() => new Error(e));
       })
     );
-
-
   }
+
 
   getVentaPagina(pagina: number): Observable<any> {
     return this.auxService.getItemsPorPagina(this.urlEndPoint, pagina);
   }
+
+
 }

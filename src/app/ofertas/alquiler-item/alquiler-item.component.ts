@@ -8,9 +8,12 @@ import { AlquilerImpl } from '../models/alquiler-impl';
 })
 export class AlquilerItemComponent implements OnInit {
   @Input() alquiler: AlquilerImpl = new AlquilerImpl(0,"","","",0,0);
+
+
   constructor() { }
 
-  ngOnInit(): void {
-  }
+
+  ngOnInit(): void {}
+
 
 }
